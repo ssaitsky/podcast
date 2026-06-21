@@ -442,6 +442,20 @@ document.querySelectorAll('form.capture').forEach(function(f){
   });
 });
 if(location.search.indexOf('sent=1')>-1){document.getElementById('sentmsg').textContent='Got it. Your message is on its way to Svetlana.';}
+
+// Story form still submits to formsubmit.co as before (so Svet keeps getting the
+// email); this just also saves the person into Kit, tagged, without blocking that.
+document.querySelector('form.storyform').addEventListener('submit', function(e){
+  var f = e.target;
+  try {
+    navigator.sendBeacon('/api/subscribe', new Blob([JSON.stringify({
+      email: f.email.value,
+      source: 'Story Submission',
+      firstName: f.name.value,
+      extraFields: { topic: f.topic.value, message: f.message.value }
+    })], { type: 'application/json' }));
+  } catch (err) { /* non-blocking, formsubmit.co still receives the real submission */ }
+});
 </script>
 </body>
 </html>
