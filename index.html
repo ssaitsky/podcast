@@ -70,6 +70,11 @@ nav ul a:hover{color:var(--teal)}
 .reach-stat strong{color:var(--teal);font-weight:700}
 .hero-img-wrap{position:relative}
 .hero-img{width:100%;display:block;border-radius:0;box-shadow:none}
+.trailer-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:14px;padding:14px 20px;border-radius:999px;border:none;background:var(--teal);color:var(--bg);font-family:'Lato',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;cursor:pointer;transition:opacity .2s}
+.trailer-btn:hover{opacity:0.88}
+.trailer-btn svg{flex-shrink:0}
+.trailer-player{margin-top:14px;display:none}
+.trailer-player.show{display:block}
 
 /* QUOTE STRIP */
 .quote-strip{padding:72px 24px;background:var(--bg2);text-align:center;border-top:1px solid rgba(0,212,204,0.12);border-bottom:1px solid rgba(0,212,204,0.12)}
@@ -87,13 +92,15 @@ nav ul a:hover{color:var(--teal)}
 .featured{padding:80px 0;background:var(--bg)}
 .featured .section-h2{margin-bottom:48px}
 .episodes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-.ep-card{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:var(--bg2);transition:transform .25s,border-color .25s}
+.ep-card{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:var(--bg2);transition:transform .25s,border-color .25s;cursor:pointer}
 .ep-card:hover{transform:translateY(-4px);border-color:var(--teal)}
-.ep-card-img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.ep-card-img{width:100%;aspect-ratio:1;object-fit:cover;display:block;pointer-events:none}
 .ep-card-body{padding:18px}
 .ep-season{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
 .ep-card-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.04em;color:var(--white);margin-bottom:10px;line-height:1.1}
 .ep-card-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6;border-left:2px solid var(--magenta);padding-left:12px}
+.ep-card-player{margin-top:14px}
+.ep-card-player:empty{display:none}
 
 /* LISTEN */
 .listen-section{padding:80px 0;background:var(--bg2)}
@@ -154,6 +161,11 @@ nav ul a:hover{color:var(--teal)}
 .storyform select option{background:var(--bg3);color:var(--white)}
 .storyform textarea{min-height:130px;resize:vertical}
 
+/* INVITE */
+.invite-section{padding:80px 0;background:var(--bg2)}
+.invite-section .section-h2{margin-bottom:8px}
+.invite-section .sub{color:var(--text);font-size:15px;max-width:540px;margin-bottom:36px}
+
 /* ABOUT */
 .about-section{padding:80px 0;background:var(--bg)}
 .about-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
@@ -166,11 +178,13 @@ nav ul a:hover{color:var(--teal)}
 
 /* FOOTER */
 footer{background:var(--bg2);border-top:1px solid rgba(0,212,204,0.1);padding:52px 24px}
-.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px}
-@media(max-width:768px){.footer-inner{grid-template-columns:1fr}}
+.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px}
+@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.footer-inner{grid-template-columns:1fr}}
 .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:0.06em;margin-bottom:8px}
 .footer-logo span{color:var(--teal)}
 footer p{font-size:13px;color:var(--text-dim);line-height:1.7}
+.footer-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px !important;color:var(--magenta) !important;line-height:1.3 !important;font-weight:400}
 .footer-links h4{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:14px}
 .footer-links a{display:block;color:rgba(255,255,255,0.55);font-size:13px;margin-bottom:8px;transition:color .2s}
 .footer-links a:hover{color:var(--teal)}
@@ -188,6 +202,7 @@ footer p{font-size:13px;color:var(--text-dim);line-height:1.7}
       <li><a href="#guide">Free Guide</a></li>
       <li><a href="#vip">VIP</a></li>
       <li><a href="#story">Your Story</a></li>
+      <li><a href="#invite">Invite Svetlana</a></li>
       <li><a href="#about">About</a></li>
     </ul>
     <a class="nav-cta" href="https://svetlanasaitsky.com">Work with Svetlana</a>
@@ -214,6 +229,11 @@ footer p{font-size:13px;color:var(--text-dim);line-height:1.7}
     </div>
     <div class="hero-img-wrap">
       <img class="hero-img" src="assets/cover-hero.jpg" alt="Svetlana Saitsky — host of Masterful Listening">
+      <button class="trailer-btn" onclick="playTrailer(this)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        Play the trailer
+      </button>
+      <div class="trailer-player" id="trailer-player"></div>
     </div>
   </div>
 </section>
@@ -230,36 +250,40 @@ footer p{font-size:13px;color:var(--text-dim);line-height:1.7}
     <p class="eyebrow">Not sure where to start?</p>
     <h2 class="section-h2">Start <span class="teal">here.</span></h2>
     <div class="episodes-grid">
-      <div class="ep-card">
+      <div class="ep-card" data-episode="16333315" onclick="playEpisode(this)">
         <img class="ep-card-img" src="https://storage.buzzsprout.com/mhq38beiwhf8ayv4ncfqb360fnse?.jpg" alt="Sacred and Savage: The Comedy Special">
         <div class="ep-card-body">
           <p class="ep-season">Season 4 &middot; Episode 51</p>
           <h3 class="ep-card-title">Sacred &amp; Savage: The Comedy Special</h3>
           <p class="ep-card-quote">"Anytime I've really lost my shit, I find something. A diamond in the shitstorm."</p>
+          <div class="ep-card-player"></div>
         </div>
       </div>
-      <div class="ep-card">
+      <div class="ep-card" data-episode="15946656" onclick="playEpisode(this)">
         <img class="ep-card-img" src="https://storage.buzzsprout.com/g3qwwaago9rpu63wmkzt8l1xgbof?.jpg" alt="I Am Exactly Perfectly On Time">
         <div class="ep-card-body">
           <p class="ep-season">Season 4 &middot; Episode 48</p>
           <h3 class="ep-card-title">I Am Exactly Perfectly On Time</h3>
           <p class="ep-card-quote">"It takes radical courage to go slow in a world of such urgency and haste."</p>
+          <div class="ep-card-player"></div>
         </div>
       </div>
-      <div class="ep-card">
+      <div class="ep-card" data-episode="16116150" onclick="playEpisode(this)">
         <img class="ep-card-img" src="https://storage.buzzsprout.com/rnkif7aduzkneabzb7htntama2ef?.jpg" alt="A Rad and Mellow Reunion">
         <div class="ep-card-body">
           <p class="ep-season">Season 4 &middot; Episode 50</p>
           <h3 class="ep-card-title">A Rad and Mellow Reunion</h3>
           <p class="ep-card-quote">"Rad taught me things about listening that no human being has."</p>
+          <div class="ep-card-player"></div>
         </div>
       </div>
-      <div class="ep-card">
+      <div class="ep-card" data-episode="16770814" onclick="playEpisode(this)">
         <img class="ep-card-img" src="https://storage.buzzsprout.com/mid1lhhq2z4feoc0vrcnmbcujgwq?.jpg" alt="Permission Slip to Feel Like Sh*t">
         <div class="ep-card-body">
           <p class="ep-season">Season 5 &middot; Episode 55</p>
           <h3 class="ep-card-title">Permission Slip to Feel Like Sh*t</h3>
           <p class="ep-card-quote">"The real secret isn't pretending to be happy. It's giving yourself permission to feel like absolute crap sometimes."</p>
+          <div class="ep-card-player"></div>
         </div>
       </div>
     </div>
@@ -293,7 +317,7 @@ footer p{font-size:13px;color:var(--text-dim);line-height:1.7}
     <div class="guide-card">
       <h3>The Masterful Listening E-Book</h3>
       <p>The full listening school in your hands. 15 chapters, 30 mantras, a phrasebook, a 30-day practice, and a self-scoring self-assessment. Guide subscribers hear about it first.</p>
-      <p style="margin-top:14px;color:rgba(255,255,255,0.35);font-size:13px;font-style:italic">Coming soon — join the guide list to get early access.</p>
+      <p style="margin-top:14px;color:rgba(255,255,255,0.55);font-size:13px;font-style:italic">Coming soon. <a href="https://svetlanasaitsky.com/ebook" style="color:var(--teal);font-style:normal;font-weight:700">Learn more here</a> and sign up for the guide list to get an exclusive discount when it's live.</p>
     </div>
   </div>
 </section>
@@ -315,13 +339,13 @@ footer p{font-size:13px;color:var(--text-dim);line-height:1.7}
       <div class="mantra-card"><p>"Peaceful productivity is the new hustle."</p><cite>Ep. 3 &middot; The Slow Revolution</cite></div>
       <div class="mantra-card"><p>"What you seek is seeking you."</p><cite>Rumi via Svet &middot; All Seasons</cite></div>
       <div class="mantra-card"><p>"Get the message. Forget the messenger."</p><cite>Core Mantra &middot; On Receiving Hard Truths</cite></div>
-      <div class="mantra-card"><p>"Really Awesome Detour."</p><cite>Ep. 29 &middot; The RAD Framework</cite></div>
+      <div class="mantra-card"><p>"Boundaries are a form of love."</p><cite>Ep. 7 &middot; Boundaries as Self-Love</cite></div>
       <div class="mantra-card"><p>"Simplicity is genius."</p><cite>Core Mantra &middot; All Seasons</cite></div>
       <div class="mantra-card"><p>"Wherever you go, there you are."</p><cite>Core Mantra &middot; On Presence</cite></div>
       <div class="mantra-card"><p>"The quality of your listening determines the quality of your life."</p><cite>Ep. 1 &middot; Welcome to the School</cite></div>
       <div class="mantra-card"><p>"Feelings are not facts. But they are real."</p><cite>Ep. 55 &middot; Permission Slip to Feel Like Sh*t</cite></div>
       <div class="mantra-card"><p>"You can't listen your way out of something you behaved your way into."</p><cite>Ep. 43 &middot; Radical Accountability</cite></div>
-      <div class="mantra-card"><p>"Rad is the detour that changes your whole route."</p><cite>Ep. 50 &middot; A Rad and Mellow Reunion</cite></div>
+      <div class="mantra-card"><p>"It takes radical courage to go slow in a world of such urgency and haste."</p><cite>Ep. 48 &middot; I Am Exactly Perfectly On Time</cite></div>
     </div>
   </div>
 </section>
@@ -355,7 +379,7 @@ footer p{font-size:13px;color:var(--text-dim);line-height:1.7}
   <div class="wrap">
     <p class="eyebrow">Your Turn</p>
     <h2 class="section-h2">Share your <span class="teal">story.</span></h2>
-    <p class="sub">Have a listening story, a question for the show, or want to be a guest? Or maybe you want Svetlana on your podcast. This is the place.</p>
+    <p class="sub">Have a listening story, a question for the show, or want to be a guest?</p>
     <form class="storyform" action="https://formsubmit.co/svetlana.thisisit@gmail.com" method="POST">
       <input type="hidden" name="_subject" value="Masterful Listening website submission">
       <input type="hidden" name="_next" value="https://masterfullistening.com/?sent=1#story">
@@ -368,7 +392,6 @@ footer p{font-size:13px;color:var(--text-dim);line-height:1.7}
       <select name="topic">
         <option>A listening story or question</option>
         <option>I want to be a guest on the show</option>
-        <option>I want Svetlana as a guest on my show</option>
         <option>Something else</option>
       </select>
       <label>Tell me everything</label>
@@ -376,6 +399,28 @@ footer p{font-size:13px;color:var(--text-dim);line-height:1.7}
       <div style="margin-top:24px"><button class="btn-teal" type="submit" style="font-size:15px;padding:15px 36px">Send it</button></div>
     </form>
     <p class="msg" id="sentmsg"></p>
+  </div>
+</section>
+
+<!-- INVITE -->
+<section class="invite-section" id="invite">
+  <div class="wrap">
+    <p class="eyebrow">Have her on</p>
+    <h2 class="section-h2">Or maybe you want <span class="mag">Svetlana</span> on your podcast.</h2>
+    <p class="sub">Speaking engagements, podcast guesting, panels, workshops. This is the place.</p>
+    <form class="storyform" action="https://formsubmit.co/svetlana.thisisit@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Speaking / Podcast Guest Inquiry">
+      <input type="hidden" name="_next" value="https://masterfullistening.com/?invited=1#invite">
+      <input type="text" name="_honey" style="display:none">
+      <label>Your name</label>
+      <input type="text" name="name" required placeholder="First and last">
+      <label>Your email</label>
+      <input type="email" name="email" required placeholder="you@example.com">
+      <label>Tell me about your show or event</label>
+      <textarea name="message" required placeholder="Audience, format, dates, anything that helps."></textarea>
+      <div style="margin-top:24px"><button class="btn-mag" type="submit" style="font-size:15px;padding:15px 36px">Send the invite</button></div>
+    </form>
+    <p class="msg" id="invitemsg"></p>
   </div>
 </section>
 
@@ -390,6 +435,7 @@ footer p{font-size:13px;color:var(--text-dim);line-height:1.7}
         <p>She is a certified Ambassador of Compassion through Stanford Medical School's Center for Compassion and Altruism Research — and a lifelong artist, hat maker, and radically poetic human being who has lived many lives in one.</p>
         <p>She built an entire career around the one skill nobody was ever taught. This is that school.</p>
         <a class="btn-outline" href="https://svetlanasaitsky.com">Work with Svetlana &rarr;</a>
+        <a class="btn-outline" href="#invite" style="margin-left:12px">Invite Svetlana to be a guest on your show &rarr;</a>
       </div>
       <div>
         <img class="about-img" src="assets/svetlana-about.jpg" alt="Svetlana Saitsky">
@@ -403,7 +449,7 @@ footer p{font-size:13px;color:var(--text-dim);line-height:1.7}
   <div class="footer-inner">
     <div>
       <div class="footer-logo">Masterful <span>Listening</span></div>
-      <p>The world's first super rad listening school. 5 seasons, 57+ episodes, everywhere you listen.</p>
+      <p class="footer-tagline">The world's first super rad listening school.</p>
     </div>
     <div class="footer-links">
       <h4>Listen</h4>
@@ -414,10 +460,17 @@ footer p{font-size:13px;color:var(--text-dim);line-height:1.7}
       <a href="https://feeds.buzzsprout.com/2234950.rss">RSS Feed</a>
     </div>
     <div class="footer-links">
+      <h4>Other Projects</h4>
+      <a href="https://radhatsforradhumans.com">Rad Hats For Rad Humans</a>
+      <a href="https://svetlanasaitsky.com">Svetlana Saitsky &middot; Coaching</a>
+      <span style="display:block;color:rgba(255,255,255,0.3);font-size:13px;margin-bottom:8px">Crying in Beautiful Places (memoir) &middot; coming soon</span>
+    </div>
+    <div class="footer-links">
       <h4>Connect</h4>
       <a href="https://www.instagram.com/jetsvetter/">Instagram</a>
       <a href="http://www.linkedin.com/in/svetlanasaitsky">LinkedIn</a>
-      <a href="https://svetlanasaitsky.com">svetlanasaitsky.com</a>
+      <a href="https://www.facebook.com/svetlanasaitsky">Facebook</a>
+      <a href="https://www.tiktok.com/@jetsvetter">TikTok</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -426,6 +479,30 @@ footer p{font-size:13px;color:var(--text-dim);line-height:1.7}
 </footer>
 
 <script>
+function playTrailer(btn){
+  var holder = document.getElementById('trailer-player');
+  btn.style.display = 'none';
+  holder.classList.add('show');
+  holder.innerHTML = '<div id="buzzsprout-trailer"></div>';
+  var s = document.createElement('script');
+  s.src = 'https://www.buzzsprout.com/2234950/episodes/13844181.js?container_id=buzzsprout-trailer&player=small';
+  s.charset = 'utf-8';
+  document.body.appendChild(s);
+}
+
+function playEpisode(card){
+  var epId = card.dataset.episode;
+  var holder = card.querySelector('.ep-card-player');
+  if (holder.dataset.loaded) return;
+  holder.dataset.loaded = '1';
+  var containerId = 'buzzsprout-ep-' + epId;
+  holder.innerHTML = '<div id="' + containerId + '"></div>';
+  var s = document.createElement('script');
+  s.src = 'https://www.buzzsprout.com/2234950/episodes/' + epId + '.js?container_id=' + containerId + '&player=small';
+  s.charset = 'utf-8';
+  document.body.appendChild(s);
+}
+
 document.querySelectorAll('form.capture').forEach(function(f){
   f.addEventListener('submit',async function(e){
     e.preventDefault();
@@ -442,19 +519,22 @@ document.querySelectorAll('form.capture').forEach(function(f){
   });
 });
 if(location.search.indexOf('sent=1')>-1){document.getElementById('sentmsg').textContent='Got it. Your message is on its way to Svetlana.';}
+if(location.search.indexOf('invited=1')>-1){document.getElementById('invitemsg').textContent='Got it. Svetlana will be in touch soon.';}
 
-// Story form still submits to formsubmit.co as before (so Svet keeps getting the
-// email); this just also saves the person into Kit, tagged, without blocking that.
-document.querySelector('form.storyform').addEventListener('submit', function(e){
-  var f = e.target;
-  try {
-    navigator.sendBeacon('/api/subscribe', new Blob([JSON.stringify({
-      email: f.email.value,
-      source: 'Story Submission',
-      firstName: f.name.value,
-      extraFields: { topic: f.topic.value, message: f.message.value }
-    })], { type: 'application/json' }));
-  } catch (err) { /* non-blocking, formsubmit.co still receives the real submission */ }
+// Story + Invite forms still submit to formsubmit.co as before (so Svet keeps
+// getting the email); this just also saves the person into Kit, tagged, without blocking that.
+document.querySelectorAll('form.storyform').forEach(function(f){
+  var source = f.closest('section').id === 'invite' ? 'Speaking & Podcast Guest Inquiry' : 'Story Submission';
+  f.addEventListener('submit', function(e){
+    try {
+      navigator.sendBeacon('/api/subscribe', new Blob([JSON.stringify({
+        email: f.email.value,
+        source: source,
+        firstName: f.name.value,
+        extraFields: f.topic ? { topic: f.topic.value, message: f.message.value } : { message: f.message.value }
+      })], { type: 'application/json' }));
+    } catch (err) { /* non-blocking, formsubmit.co still receives the real submission */ }
+  });
 });
 </script>
 </body>
