@@ -4,9 +4,9 @@
 const KIT_API_KEY = 'dpE-uwyWSSgKcXkZQyJ-cw';
 
 const FORM_IDS = {
-  'PDF - Listening':   '9592985', // Masterful Listening Website_Free PDF
-  'VIP Waitlist':      '9593004', // VIP Podcast List
-  'Story Submission':  '9593004', // no dedicated form yet — lands in VIP Podcast List, tag is what actually organizes these
+  'PDF - Listening':   '9592985', // PODCAST_Free PDF
+  'VIP Waitlist':      '9593004', // PODCAST_ VIP Podcast List
+  'Story Submission':  '9593119', // PODCAST_Story Submission
 };
 
 async function findOrCreateTag(tagName) {
