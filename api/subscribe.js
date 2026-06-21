@@ -4,8 +4,8 @@
 const KIT_API_KEY = 'dpE-uwyWSSgKcXkZQyJ-cw';
 
 const FORM_IDS = {
-  'PDF - Listening': '9452127', // TODO: replace when Listening PDF form created in Kit
-  'VIP Waitlist':    '9452127', // TODO: replace when VIP form created in Kit
+  'PDF - Listening': '9592985', // Masterful Listening Website_Free PDF
+  'VIP Waitlist':    '9593004', // VIP Podcast List
 };
 
 export default async function handler(req, res) {
