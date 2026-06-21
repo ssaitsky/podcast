@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Masterful Listening | The World's First Super Rad Listening School</title>
-<meta name="description" content="Masterful Listening is the first ever listening school you actually want to attend. Executive coach Svetlana Saitsky teaches the most important skill nobody taught you. 57+ episodes on Apple Podcasts, Spotify and everywhere you listen.">
+<meta name="description" content="Masterful Listening is the first ever listening school you actually want to attend. Executive coach Svetlana Saitsky teaches the most important skill nobody taught you. 50+ episodes on Apple Podcasts, Spotify and everywhere you listen.">
 <link rel="canonical" href="https://masterfullistening.com/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Masterful Listening with Svetlana Saitsky">
-<meta property="og:description" content="The world's first super rad listening school. 57+ episodes, available everywhere you listen.">
+<meta property="og:description" content="The world's first super rad listening school. 50+ episodes, available everywhere you listen.">
 <meta property="og:url" content="https://masterfullistening.com/">
 <meta property="og:image" content="https://masterfullistening.com/assets/cover-main.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -68,6 +68,11 @@ nav ul a:hover{color:var(--teal)}
 .platforms a:hover{border-color:var(--teal);color:var(--teal)}
 .reach-stat{font-size:13px;color:var(--text-dim);letter-spacing:0.02em}
 .reach-stat strong{color:var(--teal);font-weight:700}
+.reach-stat-mobile-extra{display:none}
+@media(max-width:900px){
+  .hero-tag{display:none}
+  .reach-stat-mobile-extra{display:inline}
+}
 .hero-img-wrap{position:relative}
 .hero-img{width:100%;display:block;border-radius:0;box-shadow:none}
 .trailer-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;padding:9px 18px;border-radius:999px;border:none;background:var(--teal);color:var(--bg);font-family:'Lato',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;cursor:pointer;transition:opacity .2s}
@@ -213,7 +218,7 @@ footer p{font-size:13px;color:var(--text-dim);line-height:1.7}
 <section class="hero">
   <div class="hero-inner">
     <div style="padding-bottom:60px">
-      <div class="hero-tag">5 Seasons &middot; 57+ Episodes &middot; Apple Podcasts Top Rated</div>
+      <div class="hero-tag">5 Seasons &middot; 50+ Episodes &middot; Apple Podcasts Top Rated</div>
       <h1>Masterful<span>Listening</span></h1>
       <p class="hero-tagline">The world's first super rad listening school.</p>
       <p class="hero-body">Listening is the most important skill none of us were ever taught. Every episode is a practice: epic stories, profound wisdom, a hint of profanity, and tools you will only hear if you are actually listening.</p>
@@ -225,7 +230,7 @@ footer p{font-size:13px;color:var(--text-dim);line-height:1.7}
         <a href="https://www.youtube.com/@MasterfulListening">YouTube</a>
         <a href="https://feeds.buzzsprout.com/2234950.rss">RSS</a>
       </div>
-      <div class="reach-stat">Listened to in <strong>70+ countries</strong> &middot; <strong>500+ cities</strong></div>
+      <div class="reach-stat">Listened to in <strong>70+ countries</strong> &middot; <strong>500+ cities</strong><span class="reach-stat-mobile-extra"> &middot; 5 seasons &middot; 50+ episodes</span></div>
       <button class="trailer-btn" onclick="playTrailer(this)">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
         Play the trailer
