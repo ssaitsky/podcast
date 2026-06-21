@@ -27,6 +27,7 @@
   --teal-mid: #00A8A0;
   --magenta:  #E91E8C;
   --purple:   #9B3FBE;
+  --eyeshadow-blue: #90EBFF;
   --white:    #ffffff;
   --cream:    #F5EDD8;
   --text:     rgba(255,255,255,0.75);
@@ -70,8 +71,10 @@ nav ul a:hover{color:var(--teal)}
 .reach-stat strong{color:var(--teal);font-weight:700}
 .reach-stat-mobile-extra{display:none}
 @media(max-width:900px){
+  .hero{padding-top:32px}
   .hero-tag{display:none}
   .reach-stat-mobile-extra{display:inline}
+  .hero-tagline{font-size:40px}
 }
 .hero-img-wrap{position:relative}
 .hero-img{width:100%;display:block;border-radius:0;box-shadow:none}
@@ -178,7 +181,7 @@ nav ul a:hover{color:var(--teal)}
 .about-section .section-h2{margin-bottom:20px}
 .about-section p{color:var(--text);font-size:15px;line-height:1.8;margin-bottom:16px}
 .about-img{width:100%;border-radius:12px;object-fit:cover;height:440px;object-position:top}
-.btn-outline{display:inline-block;margin-top:8px;padding:13px 28px;border-radius:999px;border:1.5px solid rgba(255,255,255,0.3);color:var(--white);font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;transition:all .2s}
+.btn-outline{display:inline-block;margin-top:8px;padding:13px 28px;border-radius:999px;border:1.5px solid var(--eyeshadow-blue);color:var(--white);font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;transition:all .2s}
 .btn-outline:hover{border-color:var(--teal);color:var(--teal)}
 
 /* FOOTER */
@@ -442,7 +445,7 @@ footer p{font-size:13px;color:var(--text-dim);line-height:1.7}
         <a class="btn-outline" href="#invite" style="margin-left:12px">Invite Svetlana to be a guest on your show &rarr;</a>
       </div>
       <div>
-        <img class="about-img" src="assets/svetlana-about.jpg" alt="Svetlana Saitsky">
+        <img class="about-img" src="assets/podcast-bio.jpg" alt="Svetlana Saitsky recording Masterful Listening">
       </div>
     </div>
   </div>
