@@ -9,7 +9,7 @@ const FORM_IDS = {
   'PDF - Listening':    '9592985', // PODCAST_Free PDF
   'VIP Waitlist':       '9593004', // PODCAST_ VIP Podcast List
   'Story Submission':   '9593119', // PODCAST_Story Submission
-  'Speaking Inquiry':   '9593004', // reuses VIP Waitlist until dedicated form created
+  'Speaking Inquiry':   '9611957', // PODCAST_Speaking/Guest Request
 };
 
 async function findOrCreateTag(tagName) {
