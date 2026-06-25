@@ -2,11 +2,14 @@
 // Same setup as the main site (svetlanasaitsky.com).
 
 const KIT_API_KEY = 'dpE-uwyWSSgKcXkZQyJ-cw';
+const RESEND_API_KEY = process.env.Resend_API_Key;
+const NOTIFY_EMAIL = 'svetlana.thisisit@gmail.com';
 
 const FORM_IDS = {
-  'PDF - Listening':   '9592985', // PODCAST_Free PDF
-  'VIP Waitlist':      '9593004', // PODCAST_ VIP Podcast List
-  'Story Submission':  '9593119', // PODCAST_Story Submission
+  'PDF - Listening':    '9592985', // PODCAST_Free PDF
+  'VIP Waitlist':       '9593004', // PODCAST_ VIP Podcast List
+  'Story Submission':   '9593119', // PODCAST_Story Submission
+  'Speaking Inquiry':   '9593004', // reuses VIP Waitlist until dedicated form created
 };
 
 async function findOrCreateTag(tagName) {
@@ -40,6 +43,18 @@ async function tagSubscriber(email, tagName) {
   }
 }
 
+async function sendNotification(subject, text) {
+  try {
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${RESEND_API_KEY}` },
+      body: JSON.stringify({ from: 'onboarding@resend.dev', to: NOTIFY_EMAIL, subject, text }),
+    });
+  } catch (err) {
+    console.error('Resend notification error:', err);
+  }
+}
+
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -68,6 +83,23 @@ export default async function handler(req, res) {
     if (!kitRes.ok) return res.status(kitRes.status).json({ error: data });
 
     await tagSubscriber(email, source || 'Podcast Site');
+
+    const name = (firstName || email).trim();
+    if (source === 'Story Submission') {
+      const topic = extraFields?.topic || '—';
+      const message = extraFields?.message || '—';
+      await sendNotification(
+        `Masterful Listening — story/question from ${name}`,
+        `From: ${name} (${email})\nTopic: ${topic}\n\n${message}`
+      );
+    }
+    if (source === 'Speaking Inquiry') {
+      const message = extraFields?.message || '—';
+      await sendNotification(
+        `Masterful Listening — speaking/guest inquiry from ${name}`,
+        `From: ${name} (${email})\n\n${message}`
+      );
+    }
 
     return res.status(200).json({ success: true });
   } catch (err) {
